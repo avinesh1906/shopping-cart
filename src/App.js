@@ -1,23 +1,30 @@
 import './App.css';
 import { useState } from "react";
 
+
 function App() {
+
   const [inputValue, setInputValue] = useState('');
   const [items, setItems] = useState([]);
 
   const handleAddItem = (e) => {
-    e.preventDefault(); // Prevent the form from reloading the page on submission
+    e.preventDefault(); // Prevent the form from loading on form submission
 
-    if (inputValue.trim()) {
+    // check whether the input value is not empty or with empty spaces
+    if (inputValue.trim()) { 
+
+      // Add item to the list
       setItems([...items, inputValue]);
-      setInputValue('');
+
+      // Clear the input field
+      setInputValue(''); 
     }
   };
 
   const handleRemoveItem = (index) => {
-    const newItems = [...items];
-    newItems.splice(index, 1);
-    setItems(newItems);
+    const newItems = [...items]; // Create a copy of the items array
+    newItems.splice(index, 1); // Remove one item at the specified index
+    setItems(newItems); // Update the state with the new list
   };
 
   return (
